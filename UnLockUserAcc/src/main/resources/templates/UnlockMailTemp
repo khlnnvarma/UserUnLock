@@ -1,0 +1,17 @@
+Hi {Fname} {Lname}:
+<br/>
+
+Welcome to IES family your Registration is almost compete.
+<br/>
+Please unlock your account using below temporary password.
+<br/>
+
+Temporary password : {temppass}
+
+<a href='http://localhost:9090/User/Reg/unlock/account/{emailId}'>
+Click here to Unlock
+</a>
+
+<br/>
+Thanks Regards<br/>
+IES Team	
