@@ -1,0 +1,35 @@
+spring:
+  datasource:
+    driver:
+      class: oracle.jdbc.driver.OracleDriver
+    password: hr
+    url: jdbc:oracle:thin:@localhost:1522:orcl
+    username: hr
+  jpa:
+    show-sql: true
+  security:
+    user:
+      name: varma
+      password: nopass  
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: hlnnvarmak@gmail.com
+    password: KosuriHemu@143
+    properties: 
+     mail:
+      smtp:
+       starttls:
+        enable: true
+       auth: true 
+       
+app:
+ messages:
+  invalidCredentials: Invalid Credentials
+  accLocked: Account Is Locked    
+  userRegSucess : Please Check your email for Unlocking your account.
+  userRegFailed : Please Resubmit the details as saving got failed.
+  stateNotFound : For selected Country states are not available please select differnet.
+  cityNotFound : For selected State cities are not available please select differnet.
+  unlockMailSubject : Unlock IES Account
+  emailtemplate : src/main/resources/templates/UnlockMailTemp

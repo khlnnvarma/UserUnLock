@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    
+    <property name="LOGS" value="${Logs}"/>
+    <property name="MAX_FILE_SIZE" value="1MB"/>
+    <property name="MAX_DAYS_TO_KEEP" value="1" />
+  
+
+    <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{0}.%M\(%line\) - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <appender name="File-Audit" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS}/debug.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover. Make sure the path matches the one in the file element or else
+             the rollover logs are placed in the working directory. -->
+            <!--<fileNamePattern>${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}}/${APPLICATION_NAME}}%d{yyyy-MM-dd}.%i.log</fileNamePattern>-->
+            <FileNamePattern>${LOGS}/archived/debug.%d{yyyy-MM-dd}.%i.log</FileNamePattern>
+
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>${MAX_FILE_SIZE}</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <!-- keep 30 days' worth of history -->
+            <maxHistory>${MAX_DAYS_TO_KEEP}</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <charset>UTF-8</charset>
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{0}.%M\(%line\) - %msg%n</Pattern>
+        </encoder>
+    </appender>
+    
+    <appender name="Error-Log" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS}/error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover. Make sure the path matches the one in the file element or else
+             the rollover logs are placed in the working directory. -->
+            <!--<fileNamePattern>${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}}/${APPLICATION_NAME}}%d{yyyy-MM-dd}.%i.log</fileNamePattern>-->
+            <FileNamePattern>${LOGS}/archived/error.%d{yyyy-MM-dd}.%i.log</FileNamePattern>
+
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>${MAX_FILE_SIZE}</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <!-- keep 30 days' worth of history -->
+            <maxHistory>${MAX_DAYS_TO_KEEP}</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <charset>UTF-8</charset>
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{0}.%M\(%line\) - %msg%n</Pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.java.util" level="debug" additivity="false">
+        <!-- <appender-ref ref="CONSOLE"/>-->
+        <appender-ref ref="consoleAppender"/>
+        <appender-ref ref="File-Audit"/>
+    </logger>
+    
+    <root level="error">
+    	<appender-ref ref="Error-Log"/>
+    </root>
+    
+</configuration>
