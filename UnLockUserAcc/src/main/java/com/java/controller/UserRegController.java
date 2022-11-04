@@ -43,6 +43,7 @@ public class UserRegController {
 		 }
 		 else {
 			 return new ResponseEntity<>(loginStatus, HttpStatus.BAD_REQUEST);
+			 System.out.println("hai");
 		}
 			 
 	}
