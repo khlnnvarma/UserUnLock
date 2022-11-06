@@ -17,6 +17,7 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<encodedecode>E:\programming\spring projects\spring-boot-common-encryption-decryption\target</encodedecode>
+		<sonar.exclusions>**/com/java/entity/**,**/com/java/binding/**,**/com/java/ecxceptionhandler/**,**/com/java/util/**,**/com/java/customexception/**</sonar.exclusions>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -115,6 +116,10 @@
                         <exclude>**/com/java/entity/**</exclude>
                         <exclude>**/com/java/binding/**</exclude>
                         <exclude>**/com/java/ecxceptionhandler/**</exclude>
+                        <exclude>**/com/java/util/**</exclude>
+                        <exclude>**/com/java/customexception/**</exclude>
+                        <exclude>**/com/java/ServletInitializer.class</exclude>
+                        <exclude>**/com/java/UnLockUserAccApplication.class</exclude>
                     </excludes>
                 </configuration>
 		     	<executions>
