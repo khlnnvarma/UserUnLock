@@ -16,7 +16,8 @@
 	<description>User details Email confimation</description>
 	<properties>
 		<java.version>1.8</java.version>
-		<encodedecode>E:\programming\spring projects\spring-boot-common-encryption-decryption\target</encodedecode>		
+		<encodedecode>E:\programming\spring projects\spring-boot-common-encryption-decryption\target</encodedecode>
+		<sonar.exclusions>**/com/java/entity/**,**/com/java/binding/**,**/com/java/ecxceptionhandler/**,**/com/java/util/**,**/com/java/customexception/**</sonar.exclusions>
 	</properties>
 	<dependencies>
 		<dependency>
