@@ -42,6 +42,7 @@ public class UserRegController {
 			 return new ResponseEntity<>(appProperties.getMessages().get(loginStatus), HttpStatus.ACCEPTED);
 		 }
 		 else {
+			 			 System.out.println("hai");
 			 return new ResponseEntity<>(loginStatus, HttpStatus.BAD_REQUEST);
 		}
 			 
